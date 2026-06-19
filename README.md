@@ -11,6 +11,14 @@ Visit Card update in the browser.
 - Demo deck: [docs/Hackathon_Demo_Website.pdf](docs/Hackathon_Demo_Website.pdf)
 - Hosted API: `https://5b7aw6n2.function2.insforge.app/mira-api`
 
+## Demo Deck Preview
+
+![Mira demo deck slide 1](docs/demo-deck-images/slide-01.png)
+![Mira demo deck slide 2](docs/demo-deck-images/slide-02.png)
+![Mira demo deck slide 3](docs/demo-deck-images/slide-03.png)
+![Mira demo deck slide 4](docs/demo-deck-images/slide-04.png)
+![Mira demo deck slide 5](docs/demo-deck-images/slide-05.png)
+
 ## What It Demonstrates
 
 Mira is intentionally narrow: one visitor, one exhibition, one artifact.
