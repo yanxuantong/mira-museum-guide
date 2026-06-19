@@ -1,132 +1,114 @@
-# Mira Product-Ready Demo
+# Mira
 
-Mira is a phone-first guide for the fictional Multi Modal Museum's
-`Reflections of Light` exhibition.
+Mira is a phone-first AI museum guide for the fictional **Multi Modal Museum:
+Reflections of Light** exhibition.
 
-Current target:
+Visitors open the web app, enter a phone number, choose a language, upload or
+capture an artwork image, receive an AI guide call, and watch a phone-linked
+Visit Card update in the browser.
 
-```text
-Mira · Multi Modal Museum: Reflections of Light
-```
+- Live demo: [https://5b7aw6n2.insforge.site](https://5b7aw6n2.insforge.site)
+- Demo deck: [docs/Hackathon_Demo_Website.pdf](docs/Hackathon_Demo_Website.pdf)
+- Hosted API: `https://5b7aw6n2.function2.insforge.app/mira-api`
 
-The first screen is the product flow: phone number, language, image upload, and
-`Call My Guide`. The Visit Card shown to visitors is intentionally simple:
-`Guide Summary` and `Next Recommendation`. Verification evidence, limitations,
-provider modes, and rubric checks are kept in JSON artifacts for judging.
+## What It Demonstrates
+
+Mira is intentionally narrow: one visitor, one exhibition, one artifact.
+
+The demo combines:
+
+- multimodal artwork input
+- live LLM image identification and guide generation
+- outbound voice through Vapi in the deployed flow
+- a mobile-first Visit Card keyed by phone
+- replayable sample data and verifier artifacts for judging
+
+The visitor-facing Visit Card stays simple: it shows the guide summary and the
+next recommendation. The deeper evidence, limitations, provider modes, and
+verifier results are stored in JSON artifacts for review.
+
+## Product Flow
+
+1. Open Mira on a phone.
+2. Confirm the prefilled phone number and English language setting.
+3. Upload or capture an artwork image.
+4. Tap `Call My Guide`.
+5. Mira generates a factual exhibit-style guide script.
+6. The deployed backend attempts a live Vapi outbound call.
+7. The Visit Card updates with the guide summary and next stop.
 
 ## Runtime Modes
 
-- **Local product preview:** live Nebius LLM, mock Vapi, no real phone call.
-  The terminal prints `PHONE GUIDE PREVIEW` with the exact first message that
-  would be spoken.
-- **Deployed phone test:** InsForge Site + Edge Function, live Nebius LLM, live
-  Vapi outbound call.
-- **Replay:** saved fallback only; not the product-ready success path.
+### Local Preview
 
-## Local Safe Test
+Local preview uses live Nebius LLM calls but mocks Vapi. It never places a real
+phone call.
 
 ```bash
 npm run demo
 ```
 
-Expected behavior:
+Expected output:
 
-- Uses live Nebius for image identification and guide generation.
-- Uses mock Vapi only.
-- Does not place a real phone call.
-- Prints `PHONE GUIDE PREVIEW`.
-- Writes `artifacts/local/phone-guide-preview.txt`.
-- Writes `artifacts/local/llm-image-debug.json`.
+- `PHONE GUIDE PREVIEW` printed in the terminal
+- live LLM model and response id
+- artwork identification result
+- `Vapi: mock`
+- `Live phone call happened: false`
 
-Run the local web app:
+### Local Web App
 
 ```bash
 npm run dev
 ```
 
-Open the printed URL, usually `http://127.0.0.1:4173`.
+Open the printed URL, usually:
 
-## Hosted InsForge Demo
+```text
+http://127.0.0.1:4173
+```
 
-- Site: https://5b7aw6n2.insforge.site
-- API base: https://5b7aw6n2.function2.insforge.app/mira-api
-- Function: `mira-api`
+The local web app uses the same visitor interface, but the phone call remains
+mocked for safety.
 
-Hosted API proof is written to:
-
-- `artifacts/deployment/insforge-proof.json`
-- `artifacts/deployment/start-page-response.txt`
-- `artifacts/deployment/start-guide-response.txt`
-- `artifacts/deployment/visit-card-response.txt`
-- `artifacts/deployment/vapi-live-call-proof.json`
-
-Run hosted smoke:
+### Hosted Phone Test
 
 ```bash
 MIRA_EXPECT_LIVE_VAPI=true npm run smoke:hosted
 ```
 
-This command can place a real outbound phone call. If Vapi returns a provider
-quota error, the failure is recorded instead of hidden.
+This command hits the deployed InsForge backend and can place a real outbound
+phone call through Vapi.
 
-## Real-Phone Test
+If Vapi returns a daily outbound-call limit or provider error, the failure is
+recorded in the hosted smoke output instead of hidden.
 
-1. Open https://5b7aw6n2.insforge.site on the phone.
-2. Confirm the phone field is prefilled and language is English.
-3. Upload or capture an image.
-4. Tap `Call My Guide`.
-5. The hosted function calls live Nebius and attempts a live Vapi outbound call.
-6. If Vapi reports a daily outbound-call limit, wait for quota reset or use an
-   imported Twilio number in Vapi.
+## Evidence And Verification
 
-## Evidence Pipeline
+Run the full evidence pipeline:
 
 ```bash
 npm run orchestrate
 ```
 
-This command:
+The orchestrator:
 
-- runs live local guide preview without a phone call
-- runs the replay fallback
+- runs the live local guide preview
+- runs replay fallback
 - creates and polls a local Visit Card
-- runs `npm run verify`
-- captures iPhone-sized screenshots
-- reads `done.rubric.json`
-- grades every critical criterion against real evidence
+- runs verifier checks
+- captures mobile-sized screenshots
+- grades `done.rubric.json` against real evidence
 - writes `DEMO_REPORT.md`
 - writes `artifacts/run-summary.json`
-- exits nonzero if any critical criterion is red
 
-Proof files:
-
-- `artifacts/demo/start-page.png`
-- `artifacts/demo/calling-state.png`
-- `artifacts/demo/visit-card.png`
-- `artifacts/demo/visit-card-full.png`
-- `artifacts/latest-visit-card.json`
-- `sample-data/sample-visit-card.json`
-- `sample-data/sample-verifier.json`
-- `artifacts/run-summary.json`
-- `DEMO_REPORT.md`
-
-## Image Debug
-
-```bash
-npm run debug:llm-image
-```
-
-For the current sample image, the live vision call identifies the likely work as
-`Water Lilies` by `Claude Monet` with high confidence. The proof file is
-`artifacts/local/llm-image-debug.json`.
-
-## Verify
+The main verifier command is:
 
 ```bash
 npm run verify
 ```
 
-The verifier checks:
+Verifier checks include:
 
 - `phone_visit_card_exists`
 - `has_image_request`
@@ -137,10 +119,38 @@ The verifier checks:
 
 ## Replay Fallback
 
+Replay mode uses saved sample artifacts and mock providers:
+
 ```bash
 npm run demo:replay
 ```
 
-Replay uses saved sample artifacts and mock providers. It is useful for a
-fallback demo if live LLM/Vapi is unavailable, but it is not the product-ready
-success path.
+Replay is a presentation fallback, not the product-ready success path.
+
+## Project Structure
+
+```text
+public/                 mobile-first web UI
+src/server.mjs          local web server and API
+src/mira.mjs            Visit Card workflow and verifier
+src/guide-provider.mjs  live LLM guide generation
+src/hosted-smoke.mjs    hosted API smoke test
+insforge/functions/     deployed Edge Function
+sample-data/            seeded exhibition context and replay data
+docs/                   public demo deck PDF
+```
+
+## Provider Notes
+
+- **Nebius** powers live image identification and guide generation.
+- **Vapi** powers live outbound calls in the deployed flow.
+- **InsForge** hosts the public site and Edge Function backend.
+
+Secrets are not committed. Use local `.env` files and InsForge secrets for live
+provider credentials.
+
+## Scope
+
+Mira is not a generic museum platform. There is no admin UI, login, SMS flow,
+ticketing, or collection CMS. The MVP focuses on one complete, verifiable
+visitor workflow for `Multi Modal Museum: Reflections of Light`.
