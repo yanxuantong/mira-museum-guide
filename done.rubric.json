@@ -1,0 +1,174 @@
+{
+  "title": "Mira Product-Ready Definition of Done",
+  "grading": {
+    "rule": "DONE = every required critical criterion is green and no critical failure exists. Green criteria must be backed by real evidence, not self-assertion.",
+    "evidence_file": "artifacts/run-summary.json",
+    "mode_policy": {
+      "local": "Live LLM requests enabled; Vapi mocked; no real phone call; terminal prints the exact phone guide content for review.",
+      "deployed": "Live LLM requests enabled; Vapi live; real outbound phone call.",
+      "replay": "Saved sample artifacts only; fallback path, not the main product-ready path."
+    }
+  },
+  "criteria": [
+    {
+      "id": "web_app_runs",
+      "category": "demo",
+      "required": true,
+      "critical": true,
+      "requirement": "A web app runs locally with one command and prints a URL.",
+      "check": "artifacts/run-summary.json contains commands.dev.exit_code == 0 and commands.dev.url is a non-empty http URL, or DEMO_REPORT.md includes an equivalent successful dev-server command and URL."
+    },
+    {
+      "id": "mira_start_screen",
+      "category": "impact",
+      "required": true,
+      "critical": true,
+      "requirement": "The first screen is branded Mira and prefilled for Multi Modal Museum: Reflections of Light.",
+      "check": "artifacts/demo/start-page.png exists and artifacts/run-summary.json screenshots.start_page points to it; OCR/manual report confirms visible text includes Mira and Multi Modal Museum: Reflections of Light."
+    },
+    {
+      "id": "visitor_input_flow",
+      "category": "demo",
+      "required": true,
+      "critical": true,
+      "requirement": "The user can enter a phone number, choose language, and upload or capture an image.",
+      "check": "artifacts/run-summary.json contains a successful browser_test or screenshot entry proving phone input, language selection, and image upload/capture; artifacts/demo/calling-state.png exists."
+    },
+    {
+      "id": "phone_keyed_visit_card",
+      "category": "orchestration",
+      "required": true,
+      "critical": true,
+      "requirement": "Submitting creates or updates exactly one Visit Card keyed by normalized phone number.",
+      "check": "artifacts/run-summary.json contains visit_card.phone_keyed == true and visit_card.same_phone_request_count >= 1; sample-data/sample-visit-card.json or artifacts/*/visit-card.json includes visitor_id or masked phone key and one stable visit card id/token."
+    },
+    {
+      "id": "live_visit_card_polling",
+      "category": "orchestration",
+      "required": true,
+      "critical": true,
+      "requirement": "The Visit Card appears immediately as a live shell, then updates by polling GET /api/visit-card/:id.",
+      "check": "artifacts/run-summary.json contains polling.endpoint == '/api/visit-card/:id', polling.count >= 2, and polling.observed_state_changes >= 1, or a network report file referenced by artifacts/run-summary.json proves repeated polling and state changes."
+    },
+    {
+      "id": "seeded_exhibition_context_used",
+      "category": "impact",
+      "required": true,
+      "critical": true,
+      "requirement": "The app uses seeded Reflections of Light context for image analysis and guide generation.",
+      "check": "sample-data/multimodal-museum-context.json exists and is non-empty; generated visit-card JSON evidence references Multi Modal Museum, Reflections of Light, and the seeded context source or context id."
+    },
+    {
+      "id": "live_llm_local_and_deployed",
+      "category": "autonomy",
+      "required": true,
+      "critical": true,
+      "requirement": "Both local mode and deployed mode use live LLM requests for image analysis and guide generation.",
+      "check": "artifacts/run-summary.json contains local.provider_modes.llm == 'live' and deployment.provider_modes.llm == 'live', or equivalent fields; evidence includes model names plus provider response ids, request ids, or generated artifact blocks proving real LLM calls in both modes."
+    },
+    {
+      "id": "local_vapi_mock_no_phone",
+      "category": "demo_safety",
+      "required": true,
+      "critical": true,
+      "requirement": "Local mode uses mock Vapi and must not place a real phone call.",
+      "check": "artifacts/run-summary.json contains local.provider_modes.vapi == 'mock', local.live_phone_call_happened == false, and a local mock call id or mock call record; npm run demo or the local smoke command must not trigger a real phone call."
+    },
+    {
+      "id": "local_terminal_guide_preview",
+      "category": "demo_safety",
+      "required": true,
+      "critical": true,
+      "requirement": "Local mode prints the exact guide content that would be spoken on the phone.",
+      "check": "artifacts/run-summary.json contains local.terminal_guide_preview.present == true and references command output or a saved text file containing the guide script or Vapi first message; the preview must be generated from the same live LLM/local request flow used to create the Visit Card, not a hand-written placeholder."
+    },
+    {
+      "id": "insforge_deployment_verified",
+      "category": "deployment",
+      "required": true,
+      "critical": true,
+      "requirement": "The product-ready app is deployed to InsForge and reachable from a phone.",
+      "check": "artifacts/run-summary.json contains deployment.status == 'deployed', deployment.provider == 'InsForge', deployed_url as a public HTTPS URL, and hosted start-page proof from a file, screenshot, command output, or URL check."
+    },
+    {
+      "id": "deployed_live_vapi_phone_call",
+      "category": "autonomy",
+      "required": true,
+      "critical": true,
+      "requirement": "The deployed version uses live Vapi and places a real outbound phone guide call.",
+      "check": "artifacts/run-summary.json contains deployment.provider_modes.vapi == 'live', deployment.live_phone_call_happened == true, a Vapi call id, provider status or terminal reason, and masked destination-phone evidence from a hosted run."
+    },
+    {
+      "id": "hosted_api_checks",
+      "category": "deployment",
+      "required": true,
+      "critical": true,
+      "requirement": "The deployed backend exposes the required hosted API flow.",
+      "check": "artifacts/run-summary.json contains deployed_api_checks for POST /api/start-guide and GET /api/visit-card/:id with successful HTTP status codes, response snippets or saved response files, visit_card_id/request_id, provider modes, and evidence that the Visit Card updates."
+    },
+    {
+      "id": "visit_card_complete",
+      "category": "demo",
+      "required": true,
+      "critical": true,
+      "requirement": "The Visit Card records language, uploaded image, guide summary, visitor question or transcript, next recommendation, evidence, known limitations, and verifier result.",
+      "check": "sample-data/sample-visit-card.json or artifacts/*/visit-card.json exists and contains non-empty language, image reference, guide summary, visitor question or transcript, next recommendation, evidence, known limitations, and verifier/rubric result fields."
+    },
+    {
+      "id": "verifier_pass_fail",
+      "category": "autonomy",
+      "required": true,
+      "critical": true,
+      "requirement": "The verifier produces pass/fail checks mapped to the PRD rubric and provider-mode policy.",
+      "check": "npm run verify or equivalent command exits 0 as recorded in artifacts/run-summary.json; sample-data/sample-verifier.json exists and includes checks for phone_visit_card_exists, has_image_request, has_voice_interaction, has_multilingual_record, has_next_recommendation, live_visit_card_updated, local_vapi_mock_no_phone, local_terminal_guide_preview, live_llm_enabled, and deployed_live_vapi_call."
+    },
+    {
+      "id": "replay_fallback_available",
+      "category": "demo_safety",
+      "required": true,
+      "critical": true,
+      "requirement": "Replay mode works from saved sample artifacts as a fallback if live services fail.",
+      "check": "artifacts/run-summary.json contains commands.replay.exit_code == 0; replay output references saved sample data and produces or opens a Visit Card artifact/HTML report without requiring live credentials."
+    },
+    {
+      "id": "browser_demo_report",
+      "category": "demo",
+      "required": true,
+      "critical": true,
+      "requirement": "The demo can be explained in 60-90 seconds from the app UI without hidden terminal-only steps.",
+      "check": "DEMO_REPORT.md exists and includes local URL, deployed URL, 60-90 second script, screenshot paths, artifact paths, provider modes, known limitations, fallback path, and real-phone test instructions."
+    },
+    {
+      "id": "no_sms_p0",
+      "category": "orchestration",
+      "required": true,
+      "critical": true,
+      "requirement": "SMS delivery is not part of P0 and the Visit Card is accessible in the web UI.",
+      "check": "artifacts/run-summary.json contains p0.sms_delivery == false and visit_card.ui_accessible == true; code/report does not require Twilio, SMS, or 10DLC configuration for the required demo path."
+    },
+    {
+      "id": "no_secret_leak",
+      "category": "autonomy",
+      "required": true,
+      "critical": true,
+      "requirement": "No API keys or raw secrets are exposed in source, artifacts, logs, screenshots, or reports.",
+      "check": "artifacts/run-summary.json contains secret_scan.passed == true and references the command used; no evidence file contains unmasked NEBIUS_API_KEY, VAPI_API_KEY, INSFORGE_SERVICE_KEY, raw bearer tokens, or full destination phone numbers outside deliberate private test logs."
+    },
+    {
+      "id": "insforge_persistence_bonus",
+      "category": "orchestration",
+      "required": false,
+      "critical": false,
+      "requirement": "Bonus: InsForge persistence is used for visitors, requests, images, or Visit Cards.",
+      "check": "artifacts/run-summary.json provider_modes.insforge == 'live' and includes table/storage evidence or API response proving persisted visitor/request/visit-card data."
+    },
+    {
+      "id": "full_page_visit_card_proof_bonus",
+      "category": "demo",
+      "required": false,
+      "critical": false,
+      "requirement": "Bonus: A full-page Visit Card screenshot shows evidence, limitations, and verifier checks.",
+      "check": "artifacts/demo/visit-card-full.png exists and artifacts/run-summary.json screenshots.visit_card_full points to it."
+    }
+  ]
+}

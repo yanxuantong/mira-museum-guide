@@ -1,0 +1,95 @@
+{
+  "run_id": "sess_sample_20260619215445",
+  "created_at": "2026-06-19T21:54:45.867Z",
+  "input_summary": {
+    "input_type": "artwork_photo",
+    "phone_country": "US",
+    "source": "sample-data/artwork.jpg",
+    "workflow": "sample_upload_to_mock_voice_visit_card"
+  },
+  "image_url": "sample-data/artwork.jpg",
+  "artwork_analysis": {
+    "title_guess": "Water Lilies",
+    "artist_guess": "Claude Monet",
+    "confidence": "medium",
+    "visual_description": "A nearly all-over view of water lilies floating across a reflective pond. The surface is broken into loose patches of green, blue, violet, and pale pink, with brushwork that makes the water feel both flat and shimmering.",
+    "likely_period_or_style": "French Impressionism, especially Monet's late Water Lilies series from his Giverny garden.",
+    "what_to_notice_first": [
+      "The painting has almost no horizon, so the pond becomes the whole visual world.",
+      "The lilies are not outlined sharply; they appear through color patches and quick brushwork.",
+      "The reflections make it hard to separate water, sky, plants, and light."
+    ],
+    "safety_note_about_uncertainty": "This appears consistent with Monet's Water Lilies, but exact title, date, and collection should be confirmed against museum catalog metadata."
+  },
+  "guide_script": "This looks like Water Lilies, likely by Claude Monet. First, notice the painting has almost no horizon, so the pond becomes the whole visual world, the lilies are not outlined sharply; they appear through color patches and quick brushwork, and the reflections make it hard to separate water, sky, plants, and light. Stylistically, it points toward French Impressionism, especially Monet's late Water Lilies series from his Giverny garden., especially in the way light, shadow, and surface texture shape the mood. A useful question to ask is what this image wants you to feel before you name any object: atmosphere, stillness, movement, or memory. One caveat: this appears consistent with Monet's Water Lilies, but exact title, date, and collection should be confirmed against museum catalog metadata.",
+  "suggested_questions": [
+    "Why did Monet paint water lilies so many times?",
+    "Why is there no clear horizon?",
+    "How does Impressionism change the way I should look at this?"
+  ],
+  "call_status": "mock_completed",
+  "transcript": "Assistant: This looks like Water Lilies, likely by Claude Monet. First, notice the painting has almost no horizon, so the pond becomes the whole visual world, the lilies are not outlined sharply; they appear through color patches and quick brushwork, and the reflections make it hard to separate water, sky, plants, and light. Stylistically, it points toward French Impressionism, especially Monet's late Water Lilies series from his Giverny garden., especially in the way light, shadow, and surface texture shape the mood. A useful question to ask is what this image wants you to feel before you name any object: atmosphere, stillness, movement, or memory. One caveat: this appears consistent with Monet's Water Lilies, but exact title, date, and collection should be confirmed against museum catalog metadata.\nVisitor: What should I notice first?\nAssistant: Start with the first thing your eye lands on, then notice how color, light, and composition guide you around the image.",
+  "summary": "Mock call to +14******34: the guide explained the artwork identification, visual details, likely style, and uncertainty. The visitor asked what to notice first.",
+  "call_diagnostics": {
+    "provider_status": "mock_completed",
+    "ended_reason": null,
+    "started_at": null,
+    "ended_at": null
+  },
+  "evidence": {
+    "run_id": "sess_sample_20260619215445",
+    "input_image": "sample-data/artwork.jpg",
+    "sample_image_source": "Wikimedia Commons Special:Redirect/file/Claude Monet - Water Lilies - Google Art Project (462013).jpg?width=1200",
+    "vision_provider": "Nebius Token Factory mock; live vision only runs through explicit live scripts",
+    "recommended_nebius_models": {
+      "vision": "Qwen/Qwen2.5-VL-72B-Instruct",
+      "text": "Qwen/Qwen3.5-397B-A17B"
+    },
+    "guide_generation_provider": "Local deterministic guide script",
+    "voice_provider": "Vapi mock outbound call; live calls only run through explicit live scripts",
+    "vapi_call_id": "vapi_mock_call_001",
+    "vapi_provider_status": "mock_completed",
+    "vapi_ended_reason": null,
+    "backend_provider": "Local JSON; InsForge table/storage/function integration point",
+    "provider_contracts_checked": [
+      "Vapi outbound calls require assistant or assistantId, phoneNumberId, and customer.number.",
+      "Vapi server URL events POST message payloads with status/transcript/artifact data.",
+      "InsForge offers Postgres, storage, model gateway, and Deno edge functions."
+    ]
+  },
+  "known_limitations": [
+    "The sample analysis is deterministic and does not identify a real catalog artwork.",
+    "The call transcript is mocked so the demo can run without Vapi credits or phone setup.",
+    "Local JSON stands in for InsForge persistence until a project is connected."
+  ],
+  "rubric_result": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "artifact_exists",
+        "passed": true,
+        "description": "A Visit Card artifact exists and includes the required top-level fields."
+      },
+      {
+        "name": "has_image_analysis",
+        "passed": true,
+        "description": "The artifact includes structured visual analysis."
+      },
+      {
+        "name": "has_voice_call_status",
+        "passed": true,
+        "description": "The artifact records Vapi call status or fallback mode."
+      },
+      {
+        "name": "has_evidence",
+        "passed": true,
+        "description": "The artifact names the input, provider path, and run id."
+      },
+      {
+        "name": "states_uncertainty",
+        "passed": true,
+        "description": "The artifact does not overclaim exact artwork identity."
+      }
+    ]
+  }
+}

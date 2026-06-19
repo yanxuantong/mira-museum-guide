@@ -1,0 +1,364 @@
+{
+  "schema": "mira.visit_card.v1",
+  "visit_card_id": "vc_818596ecb8b0",
+  "visitor_id": "phone_818596ecb8b0",
+  "phone_key": "818596ecb8b0",
+  "masked_phone": "+17******85",
+  "created_at": "2026-06-19T21:54:45.891Z",
+  "updated_at": "2026-06-19T21:54:59.250Z",
+  "status": "completed",
+  "exhibition": {
+    "museum": "Multi Modal Museum",
+    "name": "Reflections of Light",
+    "display_name": "Multi Modal Museum: Reflections of Light",
+    "context_id": "multimodal-reflections-light-demo"
+  },
+  "language": {
+    "requested": "en",
+    "label": "English",
+    "guide_copy_rule": "Use calm, direct museum-guide English. Keep answers short enough for a phone call."
+  },
+  "image_request": {
+    "request_id": "req_1781906085891",
+    "source": "sample-data/artwork.jpg",
+    "uploaded_filename": "sample-data/artwork.jpg",
+    "captured_or_uploaded": "sample_replay",
+    "received_at": "2026-06-19T21:54:45.891Z",
+    "analysis_summary": "Mira identifies the image as likely Water Lilies by Claude Monet, with high confidence."
+  },
+  "artwork_identification": {
+    "likely_title": "Water Lilies",
+    "likely_artist": "Claude Monet",
+    "confidence": "high",
+    "visual_evidence": [
+      "Impressionistic brushstrokes depicting water and lilies.",
+      "Vibrant colors blending reflections on water surface.",
+      "Signature style of Monet's late work."
+    ],
+    "uncertainty_note": "",
+    "provider": "Nebius Token Factory",
+    "model": "Qwen/Qwen2.5-VL-72B-Instruct",
+    "response_id": "chatcmpl-adfa40b618dc43bc"
+  },
+  "voice_interaction": {
+    "provider": "vapi",
+    "mode": "mock",
+    "call_id": "vapi_mock_vc_818596ecb8b0",
+    "live_phone_call_happened": false,
+    "started_at": "2026-06-19T21:54:53.525Z",
+    "ended_at": "2026-06-19T21:54:53.525Z",
+    "summary": "Mock Vapi guide call delivered a short exhibition-grounded explanation and captured a visitor follow-up question.",
+    "transcript": [
+      {
+        "speaker": "assistant",
+        "text": "This is Mira calling for Multi Modal Museum: Reflections of Light. Start with water, reflection, and the softened edges of the architecture."
+      },
+      {
+        "speaker": "visitor",
+        "text": "What should I notice first?"
+      },
+      {
+        "speaker": "assistant",
+        "text": "Notice how public-domain impressionist painters let color and haze do the work that a hard outline might do in a more descriptive view of water and light."
+      }
+    ],
+    "visitor_questions": [
+      "What should I notice first?",
+      "What should I see next?"
+    ],
+    "first_message": "This work is likely Water Lilies by Claude Monet, painted circa 1916 during his late Giverny period. Created when the artist faced significant vision challenges, these large-scale canvases dissolve solid forms into pure color and light. In the Reflections of Light exhibition, this piece anchors our exploration of how atmosphere and water surface guide viewer attention away from distinct shapes toward an immersive sensory experience. The vibrant, blending brushstrokes demonstrate a pivotal shift in Impressionism where the reflection becomes more real than the object itself. To deepen your understanding of this technique, please proceed to the next station featuring comparative studies of light on architecture."
+  },
+  "provider_modes": {
+    "llm": "live",
+    "vapi": "mock"
+  },
+  "llm_evidence": {
+    "provider": "Nebius Token Factory",
+    "model": "Qwen/Qwen3.5-397B-A17B",
+    "response_id": "chatcmpl-92498b675b062633",
+    "generated_at": "2026-06-19T21:54:45.891Z",
+    "error": null
+  },
+  "guide_summary": "This work is likely Water Lilies by Claude Monet, painted circa 1916 during his late Giverny period. Created when the artist faced significant vision challenges, these large-scale canvases dissolve solid forms into pure color and light. In the Reflections of Light exhibition, this piece anchors our exploration of how atmosphere and water surface guide viewer attention away from distinct shapes toward an immersive sensory experience. The vibrant, blending brushstrokes demonstrate a pivotal shift in Impressionism where the reflection becomes more real than the object itself. To deepen your understanding of this technique, please proceed to the next station featuring comparative studies of light on architecture.",
+  "next_recommendation": {
+    "title": "Compare another waterfront view",
+    "description": "Find a second view of a waterfront facade or a reflective architectural study and compare how much of the scene is built from water and reflected light.",
+    "reason": "The seeded context emphasizes repeated views and changing atmosphere."
+  },
+  "request_timeline": [
+    {
+      "at": "2026-06-19T21:54:45.891Z",
+      "status": "preparing",
+      "label": "Reading the image"
+    },
+    {
+      "at": "2026-06-19T21:54:53.525Z",
+      "status": "matching",
+      "label": "Matching it to Reflections of Light"
+    },
+    {
+      "at": "2026-06-19T21:54:53.525Z",
+      "status": "calling",
+      "label": "Preparing your guide"
+    },
+    {
+      "at": "2026-06-19T21:54:53.525Z",
+      "status": "in_progress",
+      "label": "Calling your phone"
+    },
+    {
+      "at": "2026-06-19T21:54:53.525Z",
+      "status": "summarizing",
+      "label": "Summarizing"
+    },
+    {
+      "at": "2026-06-19T21:54:53.525Z",
+      "status": "completed",
+      "label": "Completed"
+    },
+    {
+      "at": "2026-06-19T21:54:54.477Z",
+      "status": "matching",
+      "label": "Matching it to Reflections of Light"
+    },
+    {
+      "at": "2026-06-19T21:54:54.477Z",
+      "status": "calling",
+      "label": "Preparing your guide"
+    },
+    {
+      "at": "2026-06-19T21:54:54.477Z",
+      "status": "in_progress",
+      "label": "Calling your phone"
+    },
+    {
+      "at": "2026-06-19T21:54:54.477Z",
+      "status": "summarizing",
+      "label": "Summarizing"
+    },
+    {
+      "at": "2026-06-19T21:54:54.477Z",
+      "status": "completed",
+      "label": "Completed"
+    },
+    {
+      "at": "2026-06-19T21:54:55.431Z",
+      "status": "matching",
+      "label": "Matching it to Reflections of Light"
+    },
+    {
+      "at": "2026-06-19T21:54:55.431Z",
+      "status": "calling",
+      "label": "Preparing your guide"
+    },
+    {
+      "at": "2026-06-19T21:54:55.431Z",
+      "status": "in_progress",
+      "label": "Calling your phone"
+    },
+    {
+      "at": "2026-06-19T21:54:55.431Z",
+      "status": "summarizing",
+      "label": "Summarizing"
+    },
+    {
+      "at": "2026-06-19T21:54:55.431Z",
+      "status": "completed",
+      "label": "Completed"
+    },
+    {
+      "at": "2026-06-19T21:54:56.383Z",
+      "status": "matching",
+      "label": "Matching it to Reflections of Light"
+    },
+    {
+      "at": "2026-06-19T21:54:56.383Z",
+      "status": "calling",
+      "label": "Preparing your guide"
+    },
+    {
+      "at": "2026-06-19T21:54:56.383Z",
+      "status": "in_progress",
+      "label": "Calling your phone"
+    },
+    {
+      "at": "2026-06-19T21:54:56.383Z",
+      "status": "summarizing",
+      "label": "Summarizing"
+    },
+    {
+      "at": "2026-06-19T21:54:56.383Z",
+      "status": "completed",
+      "label": "Completed"
+    },
+    {
+      "at": "2026-06-19T21:54:57.343Z",
+      "status": "matching",
+      "label": "Matching it to Reflections of Light"
+    },
+    {
+      "at": "2026-06-19T21:54:57.343Z",
+      "status": "calling",
+      "label": "Preparing your guide"
+    },
+    {
+      "at": "2026-06-19T21:54:57.343Z",
+      "status": "in_progress",
+      "label": "Calling your phone"
+    },
+    {
+      "at": "2026-06-19T21:54:57.343Z",
+      "status": "summarizing",
+      "label": "Summarizing"
+    },
+    {
+      "at": "2026-06-19T21:54:57.343Z",
+      "status": "completed",
+      "label": "Completed"
+    },
+    {
+      "at": "2026-06-19T21:54:58.297Z",
+      "status": "matching",
+      "label": "Matching it to Reflections of Light"
+    },
+    {
+      "at": "2026-06-19T21:54:58.297Z",
+      "status": "calling",
+      "label": "Preparing your guide"
+    },
+    {
+      "at": "2026-06-19T21:54:58.297Z",
+      "status": "in_progress",
+      "label": "Calling your phone"
+    },
+    {
+      "at": "2026-06-19T21:54:58.297Z",
+      "status": "summarizing",
+      "label": "Summarizing"
+    },
+    {
+      "at": "2026-06-19T21:54:58.297Z",
+      "status": "completed",
+      "label": "Completed"
+    },
+    {
+      "at": "2026-06-19T21:54:59.250Z",
+      "status": "matching",
+      "label": "Matching it to Reflections of Light"
+    },
+    {
+      "at": "2026-06-19T21:54:59.250Z",
+      "status": "calling",
+      "label": "Preparing your guide"
+    },
+    {
+      "at": "2026-06-19T21:54:59.250Z",
+      "status": "in_progress",
+      "label": "Calling your phone"
+    },
+    {
+      "at": "2026-06-19T21:54:59.250Z",
+      "status": "summarizing",
+      "label": "Summarizing"
+    },
+    {
+      "at": "2026-06-19T21:54:59.250Z",
+      "status": "completed",
+      "label": "Completed"
+    }
+  ],
+  "evidence": [
+    {
+      "type": "seeded_context",
+      "path": "sample-data/multimodal-museum-context.json",
+      "quote": "This fictional exhibition uses original demo copy about light, water, atmosphere, reflection, and architecture."
+    },
+    {
+      "type": "input_image",
+      "path": "sample-data/artwork.jpg"
+    },
+    {
+      "type": "mock_vapi_event",
+      "id": "vapi_mock_vc_818596ecb8b0"
+    },
+    {
+      "type": "live_llm_response",
+      "provider": "Nebius Token Factory",
+      "model": "Qwen/Qwen3.5-397B-A17B",
+      "response_id": "chatcmpl-92498b675b062633"
+    },
+    {
+      "type": "live_artwork_identification",
+      "provider": "Nebius Token Factory",
+      "model": "Qwen/Qwen2.5-VL-72B-Instruct",
+      "response_id": "chatcmpl-adfa40b618dc43bc",
+      "error": null
+    }
+  ],
+  "known_limitations": [
+    "Mira matches a visitor photo against seeded demo context; it is not a global artwork-authentication tool.",
+    "Multi Modal Museum and Reflections of Light are fictional demo entities.",
+    "Lighting, crop, glare, and distance can affect image interpretation.",
+    "The mock call transcript is deterministic so the demo can run without Vapi credentials."
+  ],
+  "verifier_result": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "phone_visit_card_exists",
+        "passed": true,
+        "evidence": [
+          "visit_card_id",
+          "visitor_id",
+          "masked_phone"
+        ],
+        "description": "A stable Visit Card exists and is keyed by normalized phone."
+      },
+      {
+        "name": "has_image_request",
+        "passed": true,
+        "evidence": [
+          "image_request",
+          "evidence.input_image"
+        ],
+        "description": "The Visit Card records a real image request and input image evidence."
+      },
+      {
+        "name": "has_voice_interaction",
+        "passed": true,
+        "evidence": [
+          "voice_interaction.transcript",
+          "evidence.mock_vapi_event"
+        ],
+        "description": "The card includes an actual mocked or live voice interaction record."
+      },
+      {
+        "name": "has_multilingual_record",
+        "passed": true,
+        "evidence": [
+          "language",
+          "voice_interaction.transcript"
+        ],
+        "description": "The requested language and guide-language behavior are recorded."
+      },
+      {
+        "name": "has_next_recommendation",
+        "passed": true,
+        "evidence": [
+          "next_recommendation"
+        ],
+        "description": "The guide recommends a grounded next stop in the exhibition."
+      },
+      {
+        "name": "live_visit_card_updated",
+        "passed": true,
+        "evidence": [
+          "status",
+          "updated_at",
+          "request_timeline"
+        ],
+        "description": "The Visit Card moved through multiple states and was not only self-asserted."
+      }
+    ]
+  }
+}

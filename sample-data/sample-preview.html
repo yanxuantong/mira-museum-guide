@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mira Legacy Visit Card</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #171717;
+      --muted: #63615c;
+      --line: #d9d4ca;
+      --paper: #f7f3eb;
+      --panel: #fffdf8;
+      --accent: #8a3f2b;
+      --green: #196b44;
+      --red: #a1362f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    main {
+      width: min(1120px, calc(100vw - 32px));
+      margin: 32px auto;
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .artwork, .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 16px 40px rgb(40 31 22 / 0.08);
+    }
+    .artwork { padding: 16px; position: sticky; top: 24px; }
+    .artwork img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+      background: #e7dfd3;
+    }
+    .artwork p, .meta {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .card { padding: 28px; }
+    h1 { margin: 0 0 8px; font-size: clamp(32px, 6vw, 62px); line-height: 0.95; letter-spacing: 0; }
+    h2 { margin: 30px 0 10px; font-size: 18px; }
+    p { margin: 0 0 14px; }
+    ul { margin: 10px 0 0; padding-left: 20px; }
+    li { margin: 8px 0; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .status::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--green);
+    }
+    .script {
+      border-left: 4px solid var(--accent);
+      padding: 14px 0 14px 18px;
+      color: #302a24;
+      background: #fbf4e8;
+    }
+    .checks {
+      padding: 0;
+      list-style: none;
+    }
+    .checks li {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 2px 12px;
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+    }
+    .checks span {
+      grid-row: span 2;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--green);
+      padding-top: 2px;
+    }
+    .checks .fail span { color: var(--red); }
+    .checks small { color: var(--muted); }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      background: #eee6d8;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    pre {
+      white-space: pre-wrap;
+      border: 1px solid var(--line);
+      background: #fbf8f1;
+      border-radius: 6px;
+      padding: 14px;
+      overflow-x: auto;
+      font-size: 13px;
+    }
+    @media (max-width: 760px) {
+      main { grid-template-columns: 1fr; margin: 16px auto; }
+      .artwork { position: static; }
+      .card { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="artwork">
+      <img src="artwork.jpg" alt="Sample artwork uploaded to Mira">
+      <p>Input: <code>sample-data/artwork.jpg</code></p>
+      <p>Run: <code>sess_sample_20260619215445</code></p>
+    </section>
+    <section class="card">
+      <div class="status">mock_completed · verifier passed</div>
+      <h1>Mira Legacy Visit Card</h1>
+      <p class="meta">Created 2026-06-19T21:54:45.867Z</p>
+
+      <h2>Artwork Analysis</h2>
+      <p><strong>Water Lilies</strong> by Claude Monet. Confidence: medium.</p>
+      <p>A nearly all-over view of water lilies floating across a reflective pond. The surface is broken into loose patches of green, blue, violet, and pale pink, with brushwork that makes the water feel both flat and shimmering.</p>
+      <p>French Impressionism, especially Monet&#039;s late Water Lilies series from his Giverny garden.</p>
+      <ul><li>The painting has almost no horizon, so the pond becomes the whole visual world.</li><li>The lilies are not outlined sharply; they appear through color patches and quick brushwork.</li><li>The reflections make it hard to separate water, sky, plants, and light.</li></ul>
+
+      <h2>Guide Script</h2>
+      <p class="script">This looks like Water Lilies, likely by Claude Monet. First, notice the painting has almost no horizon, so the pond becomes the whole visual world, the lilies are not outlined sharply; they appear through color patches and quick brushwork, and the reflections make it hard to separate water, sky, plants, and light. Stylistically, it points toward French Impressionism, especially Monet&#039;s late Water Lilies series from his Giverny garden., especially in the way light, shadow, and surface texture shape the mood. A useful question to ask is what this image wants you to feel before you name any object: atmosphere, stillness, movement, or memory. One caveat: this appears consistent with Monet&#039;s Water Lilies, but exact title, date, and collection should be confirmed against museum catalog metadata.</p>
+
+      <h2>Suggested Follow-ups</h2>
+      <ul><li>Why did Monet paint water lilies so many times?</li><li>Why is there no clear horizon?</li><li>How does Impressionism change the way I should look at this?</li></ul>
+
+      <h2>Call Summary</h2>
+      <p>Mock call to +14******34: the guide explained the artwork identification, visual details, likely style, and uncertainty. The visitor asked what to notice first.</p>
+      <pre>Assistant: This looks like Water Lilies, likely by Claude Monet. First, notice the painting has almost no horizon, so the pond becomes the whole visual world, the lilies are not outlined sharply; they appear through color patches and quick brushwork, and the reflections make it hard to separate water, sky, plants, and light. Stylistically, it points toward French Impressionism, especially Monet&#039;s late Water Lilies series from his Giverny garden., especially in the way light, shadow, and surface texture shape the mood. A useful question to ask is what this image wants you to feel before you name any object: atmosphere, stillness, movement, or memory. One caveat: this appears consistent with Monet&#039;s Water Lilies, but exact title, date, and collection should be confirmed against museum catalog metadata.
+Visitor: What should I notice first?
+Assistant: Start with the first thing your eye lands on, then notice how color, light, and composition guide you around the image.</pre>
+
+      <h2>Evidence</h2>
+      <p>Nebius: Nebius Token Factory mock; live vision only runs through explicit live scripts</p>
+      <p>Vapi: Vapi mock outbound call; live calls only run through explicit live scripts</p>
+      <p>InsForge: Local JSON; InsForge table/storage/function integration point</p>
+
+      <h2>Verifier</h2>
+      <ul class="checks"><li class="pass">
+        <span>PASS</span>
+        <strong>artifact_exists</strong>
+        <small>A Visit Card artifact exists and includes the required top-level fields.</small>
+      </li><li class="pass">
+        <span>PASS</span>
+        <strong>has_image_analysis</strong>
+        <small>The artifact includes structured visual analysis.</small>
+      </li><li class="pass">
+        <span>PASS</span>
+        <strong>has_voice_call_status</strong>
+        <small>The artifact records Vapi call status or fallback mode.</small>
+      </li><li class="pass">
+        <span>PASS</span>
+        <strong>has_evidence</strong>
+        <small>The artifact names the input, provider path, and run id.</small>
+      </li><li class="pass">
+        <span>PASS</span>
+        <strong>states_uncertainty</strong>
+        <small>The artifact does not overclaim exact artwork identity.</small>
+      </li></ul>
+
+      <h2>Known Limitations</h2>
+      <ul><li>The sample analysis is deterministic and does not identify a real catalog artwork.</li><li>The call transcript is mocked so the demo can run without Vapi credits or phone setup.</li><li>Local JSON stands in for InsForge persistence until a project is connected.</li></ul>
+    </section>
+  </main>
+</body>
+</html>

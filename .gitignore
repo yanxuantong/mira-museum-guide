@@ -1,0 +1,22 @@
+.env
+.env.*
+!.env.example
+
+artifacts/
+node_modules/
+.DS_Store
+
+# InsForge & AI agent skills
+.insforge
+.agent
+.agents
+.augment
+.claude
+.cline
+.github/copilot*
+.kilocode
+.qoder
+.qwen
+.roo
+.trae
+.windsurf

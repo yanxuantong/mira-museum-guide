@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mira · Multi Modal Museum: Reflections of Light</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js"></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar" aria-label="Mira demo">
+      <div>
+        <h1>Mira</h1>
+        <p>Your guide to what you see.</p>
+      </div>
+      <div class="museum-mark">
+        <strong>Multi Modal Museum</strong>
+        <span>Reflections of Light</span>
+      </div>
+    </header>
+
+    <section class="primary-flow" aria-label="Start guide">
+      <div class="intro-line">
+        <h2>Multi Modal Museum: Reflections of Light</h2>
+        <p>Enter your phone number, choose a language, upload a photo, and watch your phone-linked Visit Card update.</p>
+      </div>
+
+      <form id="guide-form" class="guide-form">
+        <label>
+          <span>Phone number</span>
+          <input id="phone" name="phone" inputmode="tel" autocomplete="tel" value="773-273-1585" required>
+        </label>
+
+        <label>
+          <span>Language</span>
+          <select id="language" name="language">
+            <option value="en" selected>English</option>
+            <option value="zh">Mandarin</option>
+            <option value="es">Spanish</option>
+          </select>
+        </label>
+
+        <label class="upload-control">
+          <span>Image upload or camera</span>
+          <input id="image" name="image" type="file" accept="image/*" capture="environment">
+          <strong id="image-label">Use sample image or choose a photo</strong>
+        </label>
+
+        <button class="call-button" type="submit">Call My Guide</button>
+      </form>
+    </section>
+
+    <section id="status-panel" class="status-panel" aria-label="Guide status">
+      <h2>Guide status</h2>
+      <ol id="status-steps" class="status-steps">
+        <li data-status="preparing" class="active"><strong>Reading the image</strong><span>Waiting for your photo.</span></li>
+        <li data-status="matching"><strong>Matching it to Reflections of Light</strong><span>Seeded context is ready.</span></li>
+        <li data-status="calling"><strong>Preparing your guide</strong><span>Vapi path is mocked for replay.</span></li>
+        <li data-status="in_progress"><strong>Calling your phone</strong><span>Phone conversation will appear here.</span></li>
+      </ol>
+    </section>
+
+    <section id="visit-card" class="visit-card" aria-label="Live Visit Card">
+      <div class="card-head">
+        <div>
+          <h2>Your Visit Card</h2>
+          <p id="card-id">Phone-linked card appears after the call starts.</p>
+        </div>
+        <span id="live-state" class="live-state">idle</span>
+      </div>
+
+      <div class="image-row">
+        <img id="preview" src="/sample-data/artwork.jpg" alt="Uploaded artwork preview">
+        <div>
+          <strong>Image</strong>
+          <p id="image-summary">Sample light-and-reflection image ready for replay.</p>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <article>
+          <h3>Guide Summary</h3>
+          <p id="guide-summary">Start the guide to generate a summary.</p>
+        </article>
+        <article>
+          <h3>Next Recommendation</h3>
+          <p id="next-recommendation">Waiting for guide call.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

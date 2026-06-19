@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "phone_visit_card_exists",
+      "passed": true,
+      "evidence": [
+        "visit_card_id",
+        "visitor_id",
+        "masked_phone"
+      ],
+      "description": "A stable Visit Card exists and is keyed by normalized phone."
+    },
+    {
+      "name": "has_image_request",
+      "passed": true,
+      "evidence": [
+        "image_request",
+        "evidence.input_image"
+      ],
+      "description": "The Visit Card records a real image request and input image evidence."
+    },
+    {
+      "name": "has_voice_interaction",
+      "passed": true,
+      "evidence": [
+        "voice_interaction.transcript",
+        "evidence.mock_vapi_event"
+      ],
+      "description": "The card includes an actual mocked or live voice interaction record."
+    },
+    {
+      "name": "has_multilingual_record",
+      "passed": true,
+      "evidence": [
+        "language",
+        "voice_interaction.transcript"
+      ],
+      "description": "The requested language and guide-language behavior are recorded."
+    },
+    {
+      "name": "has_next_recommendation",
+      "passed": true,
+      "evidence": [
+        "next_recommendation"
+      ],
+      "description": "The guide recommends a grounded next stop in the exhibition."
+    },
+    {
+      "name": "live_visit_card_updated",
+      "passed": true,
+      "evidence": [
+        "status",
+        "updated_at",
+        "request_timeline"
+      ],
+      "description": "The Visit Card moved through multiple states and was not only self-asserted."
+    }
+  ]
+}

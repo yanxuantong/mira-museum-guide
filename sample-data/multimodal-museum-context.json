@@ -1,0 +1,68 @@
+{
+  "context_id": "multimodal-reflections-light-demo",
+  "museum": "Multi Modal Museum",
+  "exhibition": "Reflections of Light",
+  "display_name": "Multi Modal Museum: Reflections of Light",
+  "on_view_through": "fictional demo season",
+  "sources": [
+    {
+      "title": "Internal demo seed context",
+      "url": "sample-data/multimodal-museum-context.json"
+    },
+    {
+      "title": "Public-domain impressionist themes",
+      "url": "https://www.example.invalid/public-domain-impressionist-themes"
+    },
+    {
+      "title": "Fictional museum demo content",
+      "url": "https://www.example.invalid/multi-modal-museum/reflections-of-light"
+    }
+  ],
+  "overview": "Reflections of Light is a fictional Multi Modal Museum exhibition built for the Mira demo. It uses public-domain impressionist themes to explore how artists use water, atmosphere, reflection, architecture, and changing light to guide attention. The seeded content is original demo copy and does not reuse real museum labels, logos, or collection images.",
+  "themes": [
+    "Light changing across water and stone",
+    "Repeated views of architecture and reflection",
+    "Haze, reflection, and atmosphere over precise detail",
+    "How impressionist looking differs from descriptive city views"
+  ],
+  "seeded_entries": [
+    {
+      "id": "twilight-reflection-study",
+      "title": "Twilight Reflection Study",
+      "artist": "public-domain impressionist painters",
+      "year": "public-domain reference period",
+      "medium": "Oil on canvas",
+      "observation_prompt": "Notice how the building is less a hard-edged object than a stack of color, reflection, and twilight haze.",
+      "next_stop": "Compare this with another water-and-architecture view to see how different painters turn a city into light."
+    },
+    {
+      "id": "facade-in-water",
+      "title": "Facade in Water",
+      "artist": "public-domain impressionist painters",
+      "year": "public-domain reference period",
+      "medium": "Oil on canvas",
+      "observation_prompt": "Look for the repeated verticals and how the facade dissolves into light along the water.",
+      "next_stop": "Find a work that shows architecture with sharper detail, then compare the role of atmosphere."
+    },
+    {
+      "id": "water-lilies-context",
+      "title": "Water studies context",
+      "artist": "public-domain impressionist painters",
+      "year": "late career",
+      "medium": "Oil painting series",
+      "observation_prompt": "Use the water surface as a bridge between garden paintings and architectural reflections.",
+      "next_stop": "Look for another canvas where the water occupies as much attention as the object being reflected."
+    }
+  ],
+  "language_rules": {
+    "en": "Use calm, direct museum-guide English. Keep answers short enough for a phone call.",
+    "zh": "使用自然、简洁的中文导览语气。先说游客应该看什么，再解释为什么重要。",
+    "es": "Use clear Spanish for a museum visitor. Keep the explanation conversational and concise."
+  },
+  "limitations": [
+    "Mira matches a visitor photo against seeded demo context; it is not a global artwork-authentication tool.",
+    "Multi Modal Museum and Reflections of Light are fictional demo entities.",
+    "Lighting, crop, glare, and distance can affect image interpretation.",
+    "The mock call transcript is deterministic so the demo can run without Vapi credentials."
+  ]
+}

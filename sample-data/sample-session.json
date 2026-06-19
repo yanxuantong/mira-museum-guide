@@ -1,0 +1,36 @@
+{
+  "session_id": "sess_sample_20260619215445",
+  "created_at": "2026-06-19T21:54:45.867Z",
+  "phone": "+14******34",
+  "status": "completed",
+  "image_url": "sample-data/artwork.jpg",
+  "mode": {
+    "nebius": "mock",
+    "vapi": "mock",
+    "insforge": "local-json"
+  },
+  "analysis": {
+    "title_guess": "Water Lilies",
+    "artist_guess": "Claude Monet",
+    "confidence": "medium",
+    "visual_description": "A nearly all-over view of water lilies floating across a reflective pond. The surface is broken into loose patches of green, blue, violet, and pale pink, with brushwork that makes the water feel both flat and shimmering.",
+    "likely_period_or_style": "French Impressionism, especially Monet's late Water Lilies series from his Giverny garden.",
+    "what_to_notice_first": [
+      "The painting has almost no horizon, so the pond becomes the whole visual world.",
+      "The lilies are not outlined sharply; they appear through color patches and quick brushwork.",
+      "The reflections make it hard to separate water, sky, plants, and light."
+    ],
+    "safety_note_about_uncertainty": "This appears consistent with Monet's Water Lilies, but exact title, date, and collection should be confirmed against museum catalog metadata."
+  },
+  "guide_script": "This looks like Water Lilies, likely by Claude Monet. First, notice the painting has almost no horizon, so the pond becomes the whole visual world, the lilies are not outlined sharply; they appear through color patches and quick brushwork, and the reflections make it hard to separate water, sky, plants, and light. Stylistically, it points toward French Impressionism, especially Monet's late Water Lilies series from his Giverny garden., especially in the way light, shadow, and surface texture shape the mood. A useful question to ask is what this image wants you to feel before you name any object: atmosphere, stillness, movement, or memory. One caveat: this appears consistent with Monet's Water Lilies, but exact title, date, and collection should be confirmed against museum catalog metadata.",
+  "suggested_questions": [
+    "Why did Monet paint water lilies so many times?",
+    "Why is there no clear horizon?",
+    "How does Impressionism change the way I should look at this?"
+  ],
+  "vapi_call_id": "vapi_mock_call_001",
+  "transcript": "Assistant: This looks like Water Lilies, likely by Claude Monet. First, notice the painting has almost no horizon, so the pond becomes the whole visual world, the lilies are not outlined sharply; they appear through color patches and quick brushwork, and the reflections make it hard to separate water, sky, plants, and light. Stylistically, it points toward French Impressionism, especially Monet's late Water Lilies series from his Giverny garden., especially in the way light, shadow, and surface texture shape the mood. A useful question to ask is what this image wants you to feel before you name any object: atmosphere, stillness, movement, or memory. One caveat: this appears consistent with Monet's Water Lilies, but exact title, date, and collection should be confirmed against museum catalog metadata.\nVisitor: What should I notice first?\nAssistant: Start with the first thing your eye lands on, then notice how color, light, and composition guide you around the image.",
+  "summary": "Mock call to +14******34: the guide explained the artwork identification, visual details, likely style, and uncertainty. The visitor asked what to notice first.",
+  "artifact_path": "sample-data/sample-artifact.json",
+  "verifier_path": "sample-data/sample-verifier.json"
+}

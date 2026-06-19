@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: mira-museum-guide
+    runtime: node
+    plan: free
+    buildCommand: ""
+    startCommand: npm run dev
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: MOCK_NEBIUS
+        value: "true"
+      - key: MOCK_VAPI
+        value: "true"
+      - key: MOCK_INSFORGE
+        value: "true"

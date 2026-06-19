@@ -1,0 +1,24 @@
+{
+  "name": "mira-museum-guide",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo": "MOCK_VAPI=true node src/local-preview.mjs",
+    "demo:replay": "MOCK_NEBIUS=true MOCK_VAPI=true node src/cli.mjs run-sample",
+    "debug:llm-image": "node src/debug-llm-image.mjs",
+    "dev": "node src/server.mjs",
+    "orchestrate": "node src/orchestrator.mjs",
+    "capture-demo": "node src/capture-demo.mjs",
+    "build:insforge-site": "node src/build-insforge-site.mjs",
+    "smoke:hosted": "node src/hosted-smoke.mjs",
+    "demo:legacy-live-nebius": "MOCK_NEBIUS=false node src/cli.mjs run-sample",
+    "demo:live-vapi": "MOCK_NEBIUS=false MOCK_VAPI=false node src/cli.mjs run-sample",
+    "demo:live-vapi-fast": "MOCK_VAPI=false VAPI_POLL_SECONDS=25 VAPI_MAX_ATTEMPTS=2 node src/cli.mjs run-sample",
+    "verify": "node src/cli.mjs verify sample-data/sample-visit-card.json",
+    "verify:legacy": "node src/cli.mjs verify-echoguide sample-data/sample-artifact.json",
+    "verify:echoguide": "node src/cli.mjs verify-echoguide sample-data/sample-artifact.json",
+    "preview": "node src/cli.mjs preview sample-data/sample-artifact.json",
+    "clean": "rm -rf artifacts"
+  }
+}
